@@ -110,10 +110,16 @@
           ordinalDay = ticktock.ordinalDate.split("-")[1],
           daysRemaining = oridinalDeadline - ordinalDay;
 
-      if (daysRemaining <= 0) daysRemaining = 0;
-
-      document.getElementById("countdown").innerHTML = "That's just <span>" + daysRemaining + " days</span> away!";
-      document.getElementById("hurry-up").innerHTML = randomSpeedy();
+      if (daysRemaining == 0) {
+        document.getElementById("countdown").innerHTML = "That's <span>today</span>!";
+        document.getElementById("hurry-up").innerHTML = randomSpeedy();
+      } else if (daysRemaining < 0) {
+        document.getElementById("countdown").innerHTML = "You're too late! The deadline has passed.";
+        document.getElementById("hurry-up").innerHTML = "😒  😩  😔  😕";
+      } else {
+        document.getElementById("countdown").innerHTML = "That's just <span>" + daysRemaining + " days</span> away!";
+        document.getElementById("hurry-up").innerHTML = randomSpeedy();
+      }
     }
 
     function randomSpeedy() {
